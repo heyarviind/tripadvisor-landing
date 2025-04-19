@@ -30,7 +30,9 @@ export default function AIChatBot() {
   const [isButtonDelayed, setIsButtonDelayed] = useState(false);
   const [messages, setMessages] = useState<MessageType[]>([]);
   const [showWelcome, setShowWelcome] = useState(true);
+  const [firstMessageSent, setFirstMessageSent] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   // Make the button appear with a delay after page load
   useEffect(() => {
@@ -54,24 +56,14 @@ export default function AIChatBot() {
     }
   }, [isOpen]);
 
-  // Add an initial bot message when chat opens
+  // Reset states when chat closes
   useEffect(() => {
-    if (isOpen && messages.length === 0) {
-      // Add a small delay to allow animations to complete
-      const timer = setTimeout(() => {
-        setMessages([
-          {
-            id: Date.now().toString(),
-            content: "Hello! How can I help with your travel plans today?",
-            sender: "bot",
-            timestamp: new Date(),
-          },
-        ]);
-      }, 1500);
-
-      return () => clearTimeout(timer);
+    if (!isOpen) {
+      setShowWelcome(true);
+      setMessages([]);
+      setFirstMessageSent(false);
     }
-  }, [isOpen, messages.length]);
+  }, [isOpen]);
 
   // Scroll to bottom whenever messages change
   useEffect(() => {
@@ -79,13 +71,6 @@ export default function AIChatBot() {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
-
-  // Reset welcome screen when chat closes
-  useEffect(() => {
-    if (!isOpen) {
-      setShowWelcome(true);
-    }
-  }, [isOpen]);
 
   // Close on escape key press
   useEffect(() => {
@@ -130,15 +115,27 @@ export default function AIChatBot() {
       setMessages((prev) => [...prev, userMessage]);
       setMessage(""); // Clear input
 
+      // Track if this is the first message
+      const isFirstMessage = !firstMessageSent;
+      if (isFirstMessage) {
+        setFirstMessageSent(true);
+      }
+
       // Simulate bot response with typing indicator
       setTimeout(() => {
-        // Pick a random response from predefined responses
-        const randomResponse =
-          botResponses[Math.floor(Math.random() * botResponses.length)];
+        // For first message, show the welcome message
+        let botResponse = "";
+        if (isFirstMessage) {
+          botResponse = "Hello! How can I help with your travel plans today?";
+        } else {
+          // For subsequent messages, pick a random response
+          botResponse =
+            botResponses[Math.floor(Math.random() * botResponses.length)];
+        }
 
         const botMessage: MessageType = {
           id: (Date.now() + 1).toString(),
-          content: randomResponse,
+          content: botResponse,
           sender: "bot",
           timestamp: new Date(),
         };
@@ -318,9 +315,12 @@ export default function AIChatBot() {
                 duration: 0.4,
               }}
             >
-              {/* Chat messages */}
-              <div className="flex-1 overflow-y-auto p-6 pb-0">
-                {showWelcome && messages.length === 0 ? (
+              {/* Chat content area - restructured for bottom alignment */}
+              <div
+                ref={chatContainerRef}
+                className="flex-1 flex flex-col justify-end p-6 pb-0 overflow-hidden"
+              >
+                {showWelcome ? (
                   /* Welcome message in center */
                   <div className="h-full flex items-center justify-center">
                     <motion.div
@@ -329,26 +329,40 @@ export default function AIChatBot() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.5 }}
                     >
-                      {/* Stars animation */}
-                      <div className="relative w-16 h-16 mb-4">
+                      {/* TripAdvisor logo with stars animation */}
+                      <div className="relative w-28 h-28 mb-4">
                         <motion.div
                           className="absolute inset-0 flex items-center justify-center"
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ delay: 0.5, duration: 0.6 }}
                         >
-                          <div className="text-4xl text-[#34e0a1] filter drop-shadow-[0_0_8px_rgba(52,224,161,0.8)]">
-                            ✦
-                          </div>
+                          <Image
+                            src="/img/Tripadvisor_logoset_solid_green.svg"
+                            alt="TripAdvisor"
+                            width={80}
+                            height={80}
+                            className="filter drop-shadow-[0_0_8px_rgba(52,224,161,0.8)]"
+                          />
                         </motion.div>
                         <motion.div
-                          className="absolute top-0 right-2 flex items-center justify-center"
+                          className="absolute top-0 right-0 flex items-center justify-center"
                           initial={{ scale: 0, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ delay: 0.7, duration: 0.5 }}
                         >
                           <div className="text-xl text-[#34e0a1] filter drop-shadow-[0_0_5px_rgba(52,224,161,0.8)]">
                             ✧
+                          </div>
+                        </motion.div>
+                        <motion.div
+                          className="absolute bottom-0 left-0 flex items-center justify-center"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay: 0.8, duration: 0.5 }}
+                        >
+                          <div className="text-xl text-[#34e0a1] filter drop-shadow-[0_0_5px_rgba(52,224,161,0.8)]">
+                            ✦
                           </div>
                         </motion.div>
                       </div>
@@ -368,8 +382,8 @@ export default function AIChatBot() {
                     </motion.div>
                   </div>
                 ) : (
-                  /* Chat messages */
-                  <div className="flex flex-col space-y-4">
+                  /* Chat messages - now aligned to bottom */
+                  <div className="flex flex-col space-y-4 overflow-y-auto max-h-[calc(80vh-120px)] pb-2">
                     <AnimatePresence mode="popLayout">
                       {messages.map((msg) => (
                         <motion.div
@@ -384,19 +398,47 @@ export default function AIChatBot() {
                               : "justify-start"
                           }`}
                         >
+                          {msg.sender === "bot" && (
+                            <div className="mr-2 flex-shrink-0 relative">
+                              <Image
+                                src="/img/Tripadvisor_logoset_solid_green.svg"
+                                alt="TripAdvisor"
+                                width={32}
+                                height={32}
+                                className="rounded-full bg-white p-1"
+                              />
+                              <motion.div
+                                className="absolute -top-1 -right-1"
+                                animate={{
+                                  scale: [1, 1.2, 1],
+                                  rotate: [0, 5, 0, -5, 0],
+                                }}
+                                transition={{
+                                  duration: 2.5,
+                                  repeat: Infinity,
+                                  repeatType: "loop",
+                                  ease: "easeInOut",
+                                }}
+                              >
+                                <div className="text-xs text-[#34e0a1] filter drop-shadow-[0_0_3px_rgba(52,224,161,0.8)]">
+                                  ✦
+                                </div>
+                              </motion.div>
+                            </div>
+                          )}
                           <div
-                            className={`max-w-[80%] rounded-2xl px-4 py-2 ${
+                            className={`max-w-[80%] rounded-2xl px-4 py-2 shadow-md ${
                               msg.sender === "user"
-                                ? "bg-[#34e0a1] text-black"
-                                : "bg-white/10 text-white backdrop-blur-sm"
+                                ? "bg-black text-white"
+                                : "bg-white text-black"
                             }`}
                           >
                             <p>{msg.content}</p>
                             <div
                               className={`text-xs mt-1 ${
                                 msg.sender === "user"
-                                  ? "text-black/60"
-                                  : "text-white/60"
+                                  ? "text-white/60"
+                                  : "text-black/60"
                               }`}
                             >
                               {msg.timestamp.toLocaleTimeString([], {
