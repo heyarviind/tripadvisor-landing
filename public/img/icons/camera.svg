@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 24 24" 
+     width="24px" 
+     height="24px" 
+     aria-hidden="true"
+     xmlns="http://www.w3.org/2000/svg">
+    <path fill="#000000"
+          fill-rule="evenodd" 
+          clip-rule="evenodd" 
+          d="M7.56 7.5H3.75a.25.25 0 0 0-.25.25v10c0 .138.112.25.25.25h16.5a.25.25 0 0 0 .25-.25v-10a.25.25 0 0 0-.25-.25h-3.81l-2-2H9.56zM8.94 4h6.12l2 2h3.19c.966 0 1.75.784 1.75 1.75v10a1.75 1.75 0 0 1-1.75 1.75H3.75A1.75 1.75 0 0 1 2 17.75v-10C2 6.784 2.784 6 3.75 6h3.19z"/>
+    <path fill="#000000"
+          fill-rule="evenodd" 
+          clip-rule="evenodd" 
+          d="M12 9.25a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 0 0 0-5.5M7.75 12a4.25 4.25 0 1 1 8.5 0 4.25 4.25 0 0 1-8.5 0"/>
+</svg>

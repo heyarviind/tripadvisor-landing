@@ -1,103 +1,199 @@
-import Image from "next/image";
+/*
+  This is a hackathon project by Arvind singh, heyarviind@gmail.com
+  This is a clone of the tripadvisor website
+*/
+
+import Header from "./components/Header";
+import ListSlider from "./components/ListSlider";
+import Search from "./components/Search";
+import Thumbnails from "./components/Thumbnails";
+import Experience from "./components/Experience";
+import Footer from "./components/Footer";
+import Article from "./components/Article";
+import ArticleGrid from "./components/ArticleGrid";
+import AIBanner from "./components/AIBanner";
+import ViewAllButton from "./components/ViewAllButton";
+import AIChatBot from "./components/AIChatBot";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <AIChatBot />
+      {/* Header */}
+      <Header />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Search */}
+      <Search />
+
+      {/* AI Banner */}
+      <AIBanner />
+
+      {/* Beach Slides */}
+      <section className="container md:mx-auto max-w-[1136px] my-16 px-6 md:px-0">
+        <div className="flex justify-between items-center mb-2">
+          <h2 className="text-2xl font-[700] leading-[29px]">
+            Explore the world's most stunning seasides
+          </h2>
+          <ViewAllButton />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <p className="text-base text-[#333] mb-4">
+          2025's Travelers' Choice Awards Best of the Best Beaches
+        </p>
+
+        <ListSlider>
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/4f/f7/caption.jpg?w=600&h=-1&s=1"
+            title="World"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/50/7b/caption.jpg?w=600&h=-1&s=1"
+            title="Europe"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/50/f6/caption.jpg?w=600&h=-1&s=1"
+            title="Asia"
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/51/0b/caption.jpg?w=600&h=-1&s=1"
+            title="South Pacific"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/51/9a/caption.jpg?w=600&h=-1&s=1"
+            title="Caribbean"
+          />
+        </ListSlider>
+      </section>
+
+      {/* Experiences */}
+      <section className="container md:mx-auto max-w-[1136px] my-16 px-6 md:px-0">
+        <div className="flex justify-between items-center mb-2">
+          <h2 className="text-2xl font-[700] leading-[29px]">
+            Ways to tour Chandigarh
+          </h2>
+          <ViewAllButton />
+        </div>
+        <p className="text-base text-[#333] mb-4">
+          Book these experiences for a close-up look at Chandigarh.
+        </p>
+
+        <ListSlider>
+          <Experience
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/d7/8d/e4/caption.jpg?w=600&h=600&s=1"
+            title="2 Day Chandigarh Architecture History Tour"
+            rating={4.8}
+            reviewCount={22}
+            price={72}
+            currency="$"
+          />
+          <Experience
+            imageUrl="	https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/60/17/91/caption.jpg?w=600&h=600&s=1"
+            title="Highlights of the Chandigarh (Guided Half Day City Tour)"
+            rating={5.0}
+            reviewCount={3}
+            price={65}
+            currency="$"
+          />
+          <Experience
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/32/70/79/caption.jpg?w=600&h=600&s=1"
+            title="Private 7 Days Shimla Manali Hill Stations Tour From Chandigarh"
+            rating={5.0}
+            reviewCount={32}
+            price={50}
+            currency="$"
+          />
+          <Experience
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/cd/81/ae/caption.jpg?w=600&h=600&s=1"
+            title="Private Chandigarh Sightseeing City Tour"
+            rating={5.0}
+            reviewCount={15}
+            price={55}
+            currency="$"
+          />
+        </ListSlider>
+      </section>
+
+      {/* More to explore */}
+      <section className="my-16 bg-stone-100 py-6 px-6 md:px-0">
+        <div className="container mx-auto max-w-[1136px]">
+          <div className="flex justify-between items-center mb-2">
+            <h2 className="text-2xl font-[700] leading-[29px]">
+              More to explore
+            </h2>
+            <ViewAllButton />
+          </div>
+
+          <ArticleGrid>
+            <Article
+              imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/19/da/a2/ef06936c-bcff-483b.jpg?w=800&h=500&s=1"
+              title="5 flower festivals worth planning a trip around"
+            />
+            <Article
+              imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/19/db/20/c9de0324-9722-44d4.jpg?w=800&h=500&s=1"
+              title="6 family-friendly European cities for spring break"
+            />
+            <Article
+              imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/19/db/4b/484d3b2e-17a7-4a47.jpg?w=800&h=500&s=1"
+              title="A first timer's guide to Canada's national parks"
+            />
+          </ArticleGrid>
+        </div>
+      </section>
+
+      {/* Top destinations */}
+      <section className="container md:mx-auto max-w-[1136px] my-16 px-6 md:px-0">
+        <div className="flex justify-between items-center mb-2">
+          <h2 className="text-2xl font-[700] leading-[29px]">
+            Top destinations for your next vacation
+          </h2>
+          <ViewAllButton />
+        </div>
+
+        <ListSlider>
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/4f/f7/caption.jpg?w=600&h=-1&s=1"
+            title="Rome"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/50/7b/caption.jpg?w=600&h=-1&s=1"
+            title="Paris, France"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/50/f6/caption.jpg?w=600&h=-1&s=1"
+            title="Las Vegas, NV"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/51/0b/caption.jpg?w=600&h=-1&s=1"
+            title="Reykjavik, Iceland"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/51/9a/caption.jpg?w=600&h=-1&s=1"
+            title="London, UK"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/51/9a/caption.jpg?w=600&h=-1&s=1"
+            title="Florence, Italy"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/51/9a/caption.jpg?w=600&h=-1&s=1"
+            title="New York, NY"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/51/9a/caption.jpg?w=600&h=-1&s=1"
+            title="Barcelona, Spain"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/51/9a/caption.jpg?w=600&h=-1&s=1"
+            title="Dubai, UAE"
+          />
+          <Thumbnails
+            imageUrl="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/c1/51/9a/caption.jpg?w=600&h=-1&s=1"
+            title="Queensland, Australia"
+          />
+        </ListSlider>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </>
   );
 }
