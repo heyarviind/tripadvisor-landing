@@ -204,7 +204,7 @@ export default function Search() {
             />
             <input
               type="text"
-              className="w-full h-full rounded-full bg-transparent outline-none px-4"
+              className="w-full h-full rounded-full bg-transparent outline-none px-2"
               placeholder={tabConfig[activeTab].placeholder}
             />
             <Button variant="primary">Search</Button>

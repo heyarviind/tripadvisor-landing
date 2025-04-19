@@ -27,9 +27,9 @@ body {
   font-family: var(--font-trip);
 }
 
-h2 {
+/* h2 {
   @apply text-2xl font-[700] leading-[29px];
-}
+} */
 
 .dropdown-card {
   box-shadow: 0 2px 54px rgba(0, 0, 0, .1);

@@ -238,7 +238,7 @@ export default function Header() {
           </Popover>
         </nav>
         {/* Right section */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <Button
             variant="secondary"
             size="medium"
@@ -252,6 +252,7 @@ export default function Header() {
               height={20}
               width={20}
             />
+            <span className="w-0.5 h-full bg-gray-200">&nbsp;</span>
             <span className="text font-bold text-black">USD</span>
           </Button>
           <Button
