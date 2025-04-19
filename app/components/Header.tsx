@@ -6,10 +6,15 @@ import { Popover, Transition, Dialog } from "@headlessui/react";
 import { Fragment, useState, useEffect } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
+import SignInModal from "./modals/SignInModal";
+import PreferenceModal from "./modals/PreferenceModal";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [preferencesOpen, setPreferencesOpen] = useState(false);
+  const [signInOpen, setSignInOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("region"); // 'region' or 'currency'
 
   // Only run this after component has mounted to prevent hydration errors
   useEffect(() => {
@@ -238,6 +243,7 @@ export default function Header() {
             variant="secondary"
             size="medium"
             className="!flex !items-center gap-2"
+            onClick={() => setPreferencesOpen(true)}
           >
             <Image
               src="/img/icons/language.svg"
@@ -248,7 +254,11 @@ export default function Header() {
             />
             <span className="text font-bold text-black">USD</span>
           </Button>
-          <Button variant="black" size="medium">
+          <Button
+            variant="black"
+            size="medium"
+            onClick={() => setSignInOpen(true)}
+          >
             Sign in
           </Button>
         </div>
@@ -442,6 +452,15 @@ export default function Header() {
           )}
         </AnimatePresence>
       )}
+
+      {/* Preferences Modal */}
+      <PreferenceModal
+        preferencesOpen={preferencesOpen}
+        setPreferencesOpen={setPreferencesOpen}
+      />
+
+      {/* Sign In Modal */}
+      <SignInModal signInOpen={signInOpen} setSignInOpen={setSignInOpen} />
     </div>
   );
 }
