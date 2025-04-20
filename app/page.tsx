@@ -3,6 +3,8 @@
   This is a clone of the tripadvisor website
 */
 
+"use client";
+
 import Header from "./components/Header";
 import ListSlider from "./components/ListSlider";
 import Search from "./components/Search";
@@ -14,10 +16,12 @@ import ArticleGrid from "./components/ArticleGrid";
 import AIBanner from "./components/AIBanner";
 import ViewAllButton from "./components/ViewAllButton";
 import AIChatBot from "./components/AIChatBot";
+import TravellersChoiceBanner from "./components/TravellersChoiceBanner";
+import { AIChatProvider } from "./context/AIChatContext";
 
 export default function Home() {
   return (
-    <>
+    <AIChatProvider>
       <AIChatBot />
       {/* Header */}
       <Header />
@@ -192,8 +196,11 @@ export default function Home() {
         </ListSlider>
       </section>
 
+      {/* Travellers' Choice Awards Banner */}
+      <TravellersChoiceBanner />
+
       {/* Footer */}
       <Footer />
-    </>
+    </AIChatProvider>
   );
 }

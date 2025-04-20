@@ -35,12 +35,12 @@ const Footer = () => {
   );
 
   return (
-    <footer className="bg-gray-100 pt-8 pb-2 mt-16 text-sm">
+    <footer className="bg-[#f2f2f2] pt-8 pb-2 mt-16 text-sm">
       <div className="container mx-auto max-w-[1136px] px-4">
         <div className="md:grid md:grid-cols-6 md:gap-8 mb-4">
           {/* About Tripadvisor - Mobile Collapsible / Desktop Expanded */}
           <div className="col-span-1 md:py-0">
-            <div className="mb-4">
+            <div className="">
               <div
                 className="flex gap-3 items-center cursor-pointer md:cursor-default"
                 onClick={() => toggleSection("aboutTripadvisor")}
@@ -135,7 +135,7 @@ const Footer = () => {
 
           {/* Explore */}
           <div className="col-span-1 md:py-0">
-            <div className="mb-4">
+            <div className="">
               <div
                 className="flex gap-3 items-center cursor-pointer md:cursor-default"
                 onClick={() => toggleSection("explore")}
@@ -204,7 +204,7 @@ const Footer = () => {
 
           {/* Do Business With Us */}
           <div className="col-span-1 md:py-0">
-            <div className="mb-4">
+            <div className="">
               <div
                 className="flex gap-3 items-center cursor-pointer md:cursor-default"
                 onClick={() => toggleSection("doBusiness")}
@@ -274,7 +274,7 @@ const Footer = () => {
 
             {/* Get The App - Nested under Do Business on mobile, separate on desktop */}
             <div className="mt-6 md:mt-6">
-              <div className="mb-4">
+              <div className="">
                 <div
                   className="flex gap-3 items-center cursor-pointer md:cursor-default"
                   onClick={() => toggleSection("getTheApp")}
@@ -316,7 +316,7 @@ const Footer = () => {
 
           {/* Tripadvisor Sites */}
           <div className="col-span-2 md:py-0">
-            <div className="mb-4">
+            <div className="">
               <div
                 className="flex gap-3 items-center cursor-pointer md:cursor-default"
                 onClick={() => toggleSection("tripadvisorSites")}
@@ -391,7 +391,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-4 pb-2 border-t border-gray-300 mt-4">
+        <div className="pt-4 pb-2">
           <div className="flex flex-col md:flex-row">
             <div className="md:flex-1">
               <div className="flex flex-col md:flex-row items-start md:items-center">
@@ -409,50 +409,49 @@ const Footer = () => {
                     <p className="text-xs text-black">
                       © 2025 Tripadvisor LLC All rights reserved.
                     </p>
+                    <div className="grid grid-cols-2 md:flex md:flex-wrap md:space-x-4 mb-4 md:mb-0 text-xs md:text-base">
+                      <Link
+                        href="#"
+                        className="underline font-semibold mb-2 md:mb-0 hover:underline"
+                      >
+                        Terms of Use
+                      </Link>
+                      <Link
+                        href="#"
+                        className="underline font-semibold mb-2 md:mb-0 hover:underline"
+                      >
+                        Privacy and Cookies Statement
+                      </Link>
+                      <Link
+                        href="#"
+                        className="underline font-semibold mb-2 md:mb-0 hover:underline"
+                      >
+                        Cookie consent
+                      </Link>
+                      <Link
+                        href="#"
+                        className="underline font-semibold mb-2 md:mb-0 hover:underline"
+                      >
+                        Site Map
+                      </Link>
+                      <Link
+                        href="#"
+                        className="underline font-semibold mb-2 md:mb-0 hover:underline"
+                      >
+                        How the site works
+                      </Link>
+                      <Link
+                        href="#"
+                        className="underline font-semibold mb-2 md:mb-0 hover:underline"
+                      >
+                        Contact us
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-col mt-4">
-                <div className="grid grid-cols-2 md:flex md:flex-wrap md:space-x-4 mb-4 md:mb-0 text-xs md:text-base">
-                  <Link
-                    href="#"
-                    className="underline font-semibold mb-2 md:mb-0 hover:underline"
-                  >
-                    Terms of Use
-                  </Link>
-                  <Link
-                    href="#"
-                    className="underline font-semibold mb-2 md:mb-0 hover:underline"
-                  >
-                    Privacy and Cookies Statement
-                  </Link>
-                  <Link
-                    href="#"
-                    className="underline font-semibold mb-2 md:mb-0 hover:underline"
-                  >
-                    Cookie consent
-                  </Link>
-                  <Link
-                    href="#"
-                    className="underline font-semibold mb-2 md:mb-0 hover:underline"
-                  >
-                    Site Map
-                  </Link>
-                  <Link
-                    href="#"
-                    className="underline font-semibold mb-2 md:mb-0 hover:underline"
-                  >
-                    How the site works
-                  </Link>
-                  <Link
-                    href="#"
-                    className="underline font-semibold mb-2 md:mb-0 hover:underline"
-                  >
-                    Contact us
-                  </Link>
-                </div>
-
                 <p className="text-xs text-black mb-6 md:mb-4 mt-4">
                   This is the version of our website addressed to speakers of
                   English in the United States. If you are a resident of another

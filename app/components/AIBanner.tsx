@@ -2,52 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-// Define a UI Button component since it appears to be missing
-const Button = ({
-  children,
-  variant = "default",
-  size = "medium",
-  ...props
-}: {
-  children: React.ReactNode;
-  variant?: "default" | "light" | "dark";
-  size?: "small" | "medium" | "large";
-  [key: string]: any;
-}) => {
-  const getVariantClasses = () => {
-    switch (variant) {
-      case "light":
-        return "bg-white text-black hover:bg-gray-100";
-      case "dark":
-        return "bg-black text-white hover:bg-gray-900";
-      default:
-        return "bg-blue-500 text-white hover:bg-blue-600";
-    }
-  };
-
-  const getSizeClasses = () => {
-    switch (size) {
-      case "small":
-        return "py-1 px-3 text-sm";
-      case "large":
-        return "py-3 px-6 text-lg";
-      default:
-        return "py-2 px-4 text-base";
-    }
-  };
-
-  return (
-    <button
-      className={`font-semibold rounded-lg transition-colors ${getVariantClasses()} ${getSizeClasses()}`}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
+import Button from "./Button";
+import { useAIChat } from "../context/AIChatContext";
 
 export default function AIBanner() {
+  // Use the AI chat context
+  const { openChat } = useAIChat();
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
   const [allImagesLoaded, setAllImagesLoaded] = useState(false);
@@ -144,13 +105,27 @@ export default function AIBanner() {
             BETA
           </span>
         </div>
-        <h2 className="!text-[40px] !md:text-[56px] !font-[800] !leading-[36px] !md:leading-[58px]">
+        <h2 className="text-[40px] md:text-[56px] font-[800] leading-[36px] md:leading-[58px]">
           Plan your kind of trip
         </h2>
         <p className="text-lg md:text-[32px] font-[700] md:leading-[36px] mb-6">
           Get custom recs for all the things you're into with AI trip builder.
         </p>
-        <Button variant="light">Start a trip with AI</Button>
+        <Button
+          size="medium"
+          variant="light"
+          className="!flex items-center gap-1"
+          onClick={openChat}
+        >
+          <img
+            src="/img/icons/sparkles.svg"
+            alt="Tripadvisor Logo"
+            width={24}
+            className="filter invert brightness-100"
+            height={24}
+          />
+          Start a trip with AI
+        </Button>
       </div>
     </section>
   );

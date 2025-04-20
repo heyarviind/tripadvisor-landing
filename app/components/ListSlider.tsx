@@ -130,7 +130,7 @@ export default function ListSlider({
         <button
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          className={`absolute left-0 top-1/2 group -translate-y-1/2 -translate-x-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-black shadow-lg flex items-center justify-center ${
+          className={`absolute left-0 top-1/2 group -translate-y-1/2 -translate-x-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-[1.5px] border-black shadow-lg flex items-center justify-center ${
             currentIndex === 0
               ? "opacity-50 cursor-not-allowed"
               : "hover:bg-black hover:text-white"
@@ -144,7 +144,7 @@ export default function ListSlider({
         <button
           onClick={handleNext}
           disabled={currentIndex >= totalItems - currentItemsPerView}
-          className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full group bg-white border-2 border-black shadow-lg flex items-center justify-center ${
+          className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full group bg-white border-[1.5px] border-black shadow-lg flex items-center justify-center ${
             currentIndex >= totalItems - currentItemsPerView
               ? "opacity-50 cursor-not-allowed"
               : "hover:bg-black hover:text-white"

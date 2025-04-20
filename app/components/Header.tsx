@@ -78,7 +78,7 @@ export default function Header() {
           <Popover className="relative">
             {({ open }) => (
               <>
-                <Popover.Button as={Button} variant="secondary" size="medium">
+                <Popover.Button as={Button} variant="secondary" size="small">
                   Discover
                 </Popover.Button>
                 <Transition
@@ -114,7 +114,7 @@ export default function Header() {
           <Popover className="relative">
             {({ open }) => (
               <>
-                <Popover.Button as={Button} variant="secondary" size="medium">
+                <Popover.Button as={Button} variant="secondary" size="small">
                   Trips
                 </Popover.Button>
                 <Transition
@@ -156,7 +156,7 @@ export default function Header() {
           <Popover className="relative">
             {({ open }) => (
               <>
-                <Popover.Button as={Button} variant="secondary" size="medium">
+                <Popover.Button as={Button} variant="secondary" size="small">
                   Review
                 </Popover.Button>
                 <Transition
@@ -198,7 +198,7 @@ export default function Header() {
           <Popover className="relative">
             {({ open }) => (
               <>
-                <Popover.Button as={Button} variant="secondary" size="medium">
+                <Popover.Button as={Button} variant="secondary" size="small">
                   More
                 </Popover.Button>
                 <Transition
@@ -241,7 +241,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <Button
             variant="secondary"
-            size="medium"
+            size="small"
             className="!flex !items-center gap-2"
             onClick={() => setPreferencesOpen(true)}
           >
@@ -252,12 +252,12 @@ export default function Header() {
               height={20}
               width={20}
             />
-            <span className="w-0.5 h-full bg-gray-200">&nbsp;</span>
+            <span className="w-[1px] h-full bg-gray-200">&nbsp;</span>
             <span className="text font-bold text-black">USD</span>
           </Button>
           <Button
             variant="black"
-            size="medium"
+            size="small"
             onClick={() => setSignInOpen(true)}
           >
             Sign in

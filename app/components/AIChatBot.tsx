@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Button from "./Button";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useAIChat } from "../context/AIChatContext";
 
 // Define message types
 type MessageType = {
@@ -24,7 +25,9 @@ const botResponses = [
 ];
 
 export default function AIChatBot() {
-  const [isOpen, setIsOpen] = useState(false);
+  // Get isOpen and setter functions from context
+  const { isOpen, openChat, closeChat } = useAIChat();
+
   const [message, setMessage] = useState("");
   const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [isButtonDelayed, setIsButtonDelayed] = useState(false);
@@ -76,13 +79,13 @@ export default function AIChatBot() {
   useEffect(() => {
     const handleEscapeKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
-        setIsOpen(false);
+        closeChat();
       }
     };
 
     document.addEventListener("keydown", handleEscapeKey);
     return () => document.removeEventListener("keydown", handleEscapeKey);
-  }, [isOpen]);
+  }, [isOpen, closeChat]);
 
   // Disable scroll when overlay is open
   useEffect(() => {
@@ -180,7 +183,7 @@ export default function AIChatBot() {
               <Button
                 variant="black"
                 className="!shadow-lg !flex items-center gap-1"
-                onClick={() => setIsOpen(true)}
+                onClick={() => openChat()}
               >
                 <motion.div
                   animate={{
@@ -223,7 +226,7 @@ export default function AIChatBot() {
             <Button
               variant="black"
               className="!shadow-lg !flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity"
-              onClick={() => setIsOpen(false)}
+              onClick={() => closeChat()} // Using context's closeChat
             >
               <motion.div
                 animate={{
@@ -259,7 +262,7 @@ export default function AIChatBot() {
             {/* Backdrop with blur and gradient */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/40 backdrop-blur-sm"
-              onClick={() => setIsOpen(false)}
+              onClick={() => closeChat()} // Using context's closeChat
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -281,7 +284,7 @@ export default function AIChatBot() {
               <div className="flex justify-between items-center p-4 max-w-4xl mx-auto">
                 <div></div>
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => closeChat()} // Using context's closeChat
                   className="p-2 rounded-full bg-black/30 cursor-pointer hover:bg-black/70 text-white transition-colors duration-200"
                 >
                   <svg

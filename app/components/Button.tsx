@@ -33,8 +33,8 @@ export default function Button({
   `;
 
   const sizeStyles = {
-    small: "px-4 py-2 text-sm",
-    medium: "px-4 py-2.5 text-base",
+    small: "px-4 py-2.5 text-base",
+    medium: "px-6 py-3 text-base",
     large: "px-6 py-3 text-lg",
   };
 

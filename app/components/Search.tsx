@@ -111,7 +111,7 @@ export default function Search() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="text-[56px] font-[900] leading-[60px] absolute w-full"
+              className="text-[56px] font-[900] leading-[62px] absolute w-full"
             >
               {tabConfig[activeTab].title}
             </motion.h1>
@@ -196,7 +196,7 @@ export default function Search() {
       <div className="container mx-auto max-w-[1184px] text-center my-5">
         <div className="mt-4 max-w-4xl px-4 md:px-12 mx-auto">
           {/* Desktop search box */}
-          <div className="border-2 shadow-md shadow-stone-150 border-stone-200 rounded-full w-full p-1.5 mx-auto items-center hidden md:flex">
+          <div className="border-2 shadow-md shadow-stone-150 border-stone-200 rounded-full w-full px-1.5 py-1 mx-auto items-center hidden md:flex">
             <img
               src="/img/icons/search.svg"
               className="w-6 h-6 ml-2"
