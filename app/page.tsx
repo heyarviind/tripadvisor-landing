@@ -36,12 +36,12 @@ export default function Home() {
       <section className="container md:mx-auto max-w-[1136px] my-16 px-6 md:px-0">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-2xl font-[700] leading-[29px]">
-            Explore the world's most stunning seasides
+            Explore the world&apos;s most stunning seasides
           </h2>
           <ViewAllButton />
         </div>
         <p className="text-base text-[#333] mb-4">
-          2025's Travelers' Choice Awards Best of the Best Beaches
+          2025&apos;s Travelers&apos; Choice Awards Best of the Best Beaches
         </p>
 
         <ListSlider>
@@ -196,7 +196,7 @@ export default function Home() {
         </ListSlider>
       </section>
 
-      {/* Travellers' Choice Awards Banner */}
+      {/* Travellers&apos; Choice Awards Banner */}
       <TravellersChoiceBanner />
 
       {/* Footer */}

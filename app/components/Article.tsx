@@ -22,10 +22,13 @@ const Article = ({
         <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
           {/* Image container */}
           <div className="w-full h-full transition-transform duration-300 group-hover:scale-105">
-            <img
+            <Image
               src={imageUrl}
               alt={title}
-              className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+              priority
             />
           </div>
 

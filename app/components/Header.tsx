@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Button from "./Button";
-import { Popover, Transition, Dialog } from "@headlessui/react";
+import { Popover, Transition } from "@headlessui/react";
 import { Fragment, useState, useEffect } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,7 +14,6 @@ export default function Header() {
   const [mounted, setMounted] = useState(false);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("region"); // 'region' or 'currency'
 
   // Only run this after component has mounted to prevent hydration errors
   useEffect(() => {
@@ -76,7 +75,7 @@ export default function Header() {
         {/* Navigation */}
         <nav className="flex">
           <Popover className="relative">
-            {({ open }) => (
+            {() => (
               <>
                 <Popover.Button as={Button} variant="secondary" size="small">
                   Discover
@@ -96,7 +95,7 @@ export default function Header() {
                         href="#"
                         className="px-6 py-3 hover:bg-gray-50 block font-semibold text-base text-black"
                       >
-                        Travelers' Choice
+                        Travelers&apos; Choice
                       </a>
                       <a
                         href="#"
@@ -112,7 +111,7 @@ export default function Header() {
           </Popover>
 
           <Popover className="relative">
-            {({ open }) => (
+            {() => (
               <>
                 <Popover.Button as={Button} variant="secondary" size="small">
                   Trips
@@ -154,7 +153,7 @@ export default function Header() {
           </Popover>
 
           <Popover className="relative">
-            {({ open }) => (
+            {() => (
               <>
                 <Popover.Button as={Button} variant="secondary" size="small">
                   Review
@@ -196,7 +195,7 @@ export default function Header() {
           </Popover>
 
           <Popover className="relative">
-            {({ open }) => (
+            {() => (
               <>
                 <Popover.Button as={Button} variant="secondary" size="small">
                   More
@@ -386,7 +385,7 @@ export default function Header() {
                       href="#"
                       className="block py-3 text-base font-semibold text-black"
                     >
-                      Travelers' Choice
+                      Travelers&apos; Choice
                     </a>
                     <a
                       href="#"

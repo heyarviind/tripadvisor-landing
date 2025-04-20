@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Experience({
   imageUrl,
   title,
@@ -40,12 +42,17 @@ export default function Experience({
     return stars;
   };
 
+  // Trim any leading or trailing spaces from the image URL
+  const cleanImageUrl = imageUrl.trim();
+
   return (
     <div className="relative rounded-lg overflow-hidden">
       <div className="relative rounded-lg overflow-hidden">
-        <img
-          src={imageUrl}
+        <Image
+          src={cleanImageUrl}
           alt={title}
+          width={500}
+          height={500}
           className="w-full object-cover aspect-square"
         />
 

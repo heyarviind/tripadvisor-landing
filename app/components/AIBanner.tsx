@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Button from "./Button";
 import { useAIChat } from "../context/AIChatContext";
 
@@ -10,33 +11,37 @@ export default function AIBanner() {
   const { openChat } = useAIChat();
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
   const [allImagesLoaded, setAllImagesLoaded] = useState(false);
 
-  const images = [
-    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/20/6c/10/app-relaunch-banner-2.jpg?w=2400&h=-1",
-    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/20/6c/35/app-relaunch-banner-3.jpg?w=800&h=-1",
-    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/20/6b/e0/app-relaunch-banner-1.jpg?w=800&h=-1",
-  ];
+  // Use useMemo to prevent images array from being recreated on every render
+  const images = useMemo(
+    () => [
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/20/6c/10/app-relaunch-banner-2.jpg?w=2400&h=-1",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/20/6c/35/app-relaunch-banner-3.jpg?w=800&h=-1",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/20/6b/e0/app-relaunch-banner-1.jpg?w=800&h=-1",
+    ],
+    []
+  );
 
   // Preload images
   useEffect(() => {
     const loadedStates = Array(images.length).fill(false);
+    let loadedCount = 0;
 
     images.forEach((src, index) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
+      const imgElement = document.createElement("img");
+      imgElement.src = src;
+      imgElement.onload = () => {
         loadedStates[index] = true;
-        setImagesLoaded([...loadedStates]);
+        loadedCount += 1;
 
         // Check if all images are loaded
-        if (loadedStates.every((isLoaded) => isLoaded)) {
+        if (loadedCount === images.length) {
           setAllImagesLoaded(true);
         }
       };
     });
-  }, []);
+  }, [images]);
 
   // Start the image rotation once all images are loaded
   useEffect(() => {
@@ -75,7 +80,13 @@ export default function AIBanner() {
       {/* Hidden image preloaders */}
       <div className="hidden">
         {images.map((src, index) => (
-          <img key={`preload-${index}`} src={src} alt="Preload banner" />
+          <Image
+            key={`preload-${index}`}
+            src={src}
+            alt="Preload banner"
+            width={800}
+            height={600}
+          />
         ))}
       </div>
 
@@ -109,7 +120,8 @@ export default function AIBanner() {
           Plan your kind of trip
         </h2>
         <p className="text-lg md:text-[32px] font-[700] md:leading-[36px] mb-6">
-          Get custom recs for all the things you're into with AI trip builder.
+          Get custom recs for all the things you&apos;re into with AI trip
+          builder.
         </p>
         <Button
           size="medium"
@@ -117,12 +129,12 @@ export default function AIBanner() {
           className="!flex items-center gap-1"
           onClick={openChat}
         >
-          <img
+          <Image
             src="/img/icons/sparkles.svg"
             alt="Tripadvisor Logo"
             width={24}
-            className="filter invert brightness-100"
             height={24}
+            className="filter invert brightness-100"
           />
           Start a trip with AI
         </Button>

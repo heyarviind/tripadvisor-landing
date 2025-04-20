@@ -29,11 +29,6 @@ const Footer = () => {
     });
   };
 
-  // Plus/minus icon component
-  const ToggleIcon = ({ isExpanded }: { isExpanded: boolean }) => (
-    <span className="text-2xl">{isExpanded ? "−" : "+"}</span>
-  );
-
   return (
     <footer className="bg-[#f2f2f2] pt-8 pb-2 mt-16 text-sm">
       <div className="container mx-auto max-w-[1136px] px-4">
@@ -180,7 +175,7 @@ const Footer = () => {
                   href="#"
                   className="text-black hover:text-black hover:underline"
                 >
-                  Travelers' Choice
+                  Travelers&apos; Choice
                 </Link>
               </li>
               <li>

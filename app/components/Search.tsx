@@ -2,11 +2,13 @@
 
 import Button from "./Button";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import {
   motion,
   AnimatePresence,
   useMotionValue,
   useTransform,
+  MotionValue,
 } from "framer-motion";
 
 type TabType =
@@ -197,9 +199,11 @@ export default function Search() {
         <div className="mt-4 max-w-4xl px-4 md:px-12 mx-auto">
           {/* Desktop search box */}
           <div className="border-2 shadow-md shadow-stone-150 border-stone-200 rounded-full w-full px-1.5 py-1 mx-auto items-center hidden md:flex">
-            <img
+            <Image
               src="/img/icons/search.svg"
-              className="w-6 h-6 ml-2"
+              width={24}
+              height={24}
+              className="ml-2"
               alt="search"
             />
             <input
@@ -213,9 +217,11 @@ export default function Search() {
           {/* Mobile search box */}
           <div className="md:hidden bg-white rounded-lg shadow-md p-6 mx-auto border-2 border-stone-200">
             <div className="flex items-center border-b border-gray-200 pb-3">
-              <img
+              <Image
                 src="/img/icons/search.svg"
-                className="w-6 h-6 mr-3"
+                width={24}
+                height={24}
+                className="mr-3"
                 alt="search"
               />
               <input
@@ -247,7 +253,7 @@ const Tab = ({
   label: string;
   active?: boolean;
   onClick?: () => void;
-  borderOpacity: any;
+  borderOpacity: MotionValue<number>;
 }) => {
   return (
     <motion.a
@@ -258,7 +264,7 @@ const Tab = ({
       }}
       className="flex items-center gap-1 py-1.5 relative text-black/80 hover:text-black/60 whitespace-nowrap"
     >
-      <img src={icon} className="w-6 h-6" alt={label} />
+      <Image src={icon} width={24} height={24} alt={label} />
       {label}
       <motion.div
         className="absolute bottom-0 left-0 right-0 h-0.5 bg-black"

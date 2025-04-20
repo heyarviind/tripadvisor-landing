@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function TravellersChoiceBanner() {
   return (
@@ -9,14 +10,16 @@ export default function TravellersChoiceBanner() {
       <div className="container mx-auto max-w-[1136px] relative flex flex-col md:flex-row">
         {/* Left content */}
         <div className="md:w-1/2 p-8 md:py-12 flex flex-col justify-center relative z-10">
-          <img
+          <Image
             src="https://static.tacdn.com/img2/travelers_choice/2023/TC_badge_yellow.svg"
             alt="Tripadvisor Owl"
+            width={80}
+            height={80}
             className="w-20 h-20"
           />
 
           <h2 className="text-3xl md:text-5xl font-[900] text-black mb-2">
-            Travellers' Choice Awards Best of the Best
+            Travellers&apos; Choice Awards Best of the Best
           </h2>
 
           <p className="text-base md:text-2xl text-gray-800 mb-6">
@@ -37,9 +40,11 @@ export default function TravellersChoiceBanner() {
 
         {/* Right image */}
         <div className="md:w-1/2 relative h-80 md:h-auto">
-          <img
+          <Image
             src="/img/tc_cards_2025.png"
             alt="Travellers' Choice Awards"
+            width={500}
+            height={400}
             className="absolute top-0 right-0 h-full w-full object-cover md:object-contain object-right"
           />
 
