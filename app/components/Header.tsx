@@ -298,7 +298,11 @@ export default function Header() {
           />
         </div>
 
-        <button type="button" className="text-gray-700 rounded-full">
+        <button
+          type="button"
+          className="text-gray-700 rounded-full cursor-pointer"
+          onClick={() => setSignInOpen(true)}
+        >
           <span className="sr-only">User profile</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -351,7 +355,13 @@ export default function Header() {
                   </button>
 
                   <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-1.5 text-sm font-semibold">
+                    <div
+                      className="flex items-center gap-1.5 text-sm font-semibold cursor-pointer"
+                      onClick={() => {
+                        setPreferencesOpen(true);
+                        setMobileMenuOpen(false); // Close the mobile menu when opening preferences
+                      }}
+                    >
                       <Image
                         src="/img/icons/language.svg"
                         alt="Language"

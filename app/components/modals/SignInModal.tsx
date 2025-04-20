@@ -16,7 +16,7 @@ export default function SignInModal({
     <Transition appear show={signInOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-50"
+        className="relative z-50 h-full"
         onClose={() => setSignInOpen(false)}
       >
         <Transition.Child
@@ -35,10 +35,10 @@ export default function SignInModal({
         </Transition.Child>
 
         <div
-          className="fixed inset-0 overflow-y-auto"
+          className="fixed inset-0 overflow-y-auto h-full"
           style={{ marginTop: "0px" }}
         >
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="flex h-full items-center justify-center md:p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -48,7 +48,7 @@ export default function SignInModal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-[500px] h-[607px] transform overflow-hidden rounded-xl bg-white px-12 py-8 text-left align-middle shadow-black/30 shadow-xl transition-all">
+              <Dialog.Panel className="w-full h-full md:max-w-[500px] md:h-[607px] transform overflow-hidden md:rounded-xl bg-white p-6 md:px-12 md:py-8 text-left align-middle shadow-black/30 shadow-xl transition-all">
                 <div className="absolute top-4 right-4">
                   <button
                     type="button"

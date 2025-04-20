@@ -268,7 +268,7 @@ const Footer = () => {
             </ul>
 
             {/* Get The App - Nested under Do Business on mobile, separate on desktop */}
-            <div className="mt-6 md:mt-6">
+            <div className="mt-0 md:mt-6">
               <div className="">
                 <div
                   className="flex gap-3 items-center cursor-pointer md:cursor-default"

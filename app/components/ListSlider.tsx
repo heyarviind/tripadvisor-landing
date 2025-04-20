@@ -79,18 +79,15 @@ export default function ListSlider({
             {children.map((child, index) => (
               <li
                 key={index}
-                className="shrink-0 w-[65%] snap-start"
+                className="shrink-0 w-[75vw] max-w-[300px] min-w-[200px] snap-start"
                 style={{
-                  maxWidth: "260px",
-                  maxHeight: "260px",
-                  width: "65%",
                   aspectRatio: "1",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <div className="w-full h-full overflow-hidden">{child}</div>
+                <div className="w-full h-full">{child}</div>
               </li>
             ))}
           </ul>

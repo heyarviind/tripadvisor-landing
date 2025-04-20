@@ -4,7 +4,7 @@ export default function ViewAllButton() {
   return (
     <Link
       href="#"
-      className="text-black text-base font-bold hover:underline flex items-center"
+      className="text-black text-base font-bold hover:underline items-center hidden md:flex"
     >
       View all
       <svg

@@ -91,7 +91,7 @@ export default function PreferenceModal({
           className="fixed inset-0 overflow-y-auto"
           style={{ marginTop: "0px" }}
         >
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="flex min-h-full items-center justify-center md:p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -101,7 +101,7 @@ export default function PreferenceModal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-4xl max-h-[80vh] overflow-y-auto transform overflow-hidden rounded-2xl bg-white p-14 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full h-full md:max-w-4xl md:max-h-[80vh] overflow-y-auto transform overflow-hidden md:rounded-2xl bg-white p-6 md:p-14 text-left align-middle shadow-xl transition-all">
                 <div className="absolute top-5 right-5">
                   <button
                     type="button"
@@ -149,7 +149,7 @@ export default function PreferenceModal({
                         Suggested region and language
                       </h4>
 
-                      <div className="grid grid-cols-5 gap-4 mb-8">
+                      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
                         <div
                           className={`p-2  rounded-lg cursor-pointer hover:bg-black hover:text-white`}
                         >
@@ -162,7 +162,7 @@ export default function PreferenceModal({
                         Choose a region and language
                       </h4>
 
-                      <div className="grid md:grid-cols-5 gap-4">
+                      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                         {currencyData.map((item, index) => (
                           <div
                             key={index}
@@ -198,7 +198,7 @@ export default function PreferenceModal({
                         Choose a currency
                       </h4>
 
-                      <div className="grid md:grid-cols-5 gap-4">
+                      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                         {currencyList.map((currency, index) => (
                           <div
                             key={index}

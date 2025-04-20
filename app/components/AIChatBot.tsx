@@ -177,7 +177,7 @@ export default function AIChatBot() {
               damping: 20,
               duration: 0.6,
             }}
-            className="z-10 !fixed bottom-4 left-1/2 -translate-x-1/2"
+            className="z-50 !fixed bottom-4 left-1/2 -translate-x-1/2"
           >
             <div className="relative">
               <Button
@@ -201,7 +201,8 @@ export default function AIChatBot() {
                 >
                   <SparklesIcon color="#34e0a1" />
                 </motion.div>
-                AI Chat Assistant
+                AI <span className="hidden md:inline-block">Chat</span>{" "}
+                Assistant
               </Button>
             </div>
           </motion.div>

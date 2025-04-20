@@ -130,11 +130,10 @@ export default function AIBanner() {
           onClick={openChat}
         >
           <Image
-            src="/img/icons/sparkles.svg"
+            src="/img/icons/sparkles-black.svg"
             alt="Tripadvisor Logo"
             width={24}
             height={24}
-            className="filter invert brightness-100"
           />
           Start a trip with AI
         </Button>
